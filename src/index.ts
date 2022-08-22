@@ -1,13 +1,8 @@
-import {findAllWonMatches, parseMatches } from './football/MatchUtils';
-import {readMatchesFromCsv} from './csv/CsvUtils'
+import { CsvFileReader } from "./CsvFileReader";
 
 const matchesPath = './src/resources/football.csv';
 
-const matches = readMatchesFromCsv(matchesPath);
+const reader = new CsvFileReader(matchesPath);
+reader.read();
 
-const matchesList = parseMatches(matches);
-
-console.log(
-    findAllWonMatches('Man United', matchesList).length
-)
 
