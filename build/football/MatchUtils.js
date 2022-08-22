@@ -2,8 +2,12 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.findAllWonMatches = exports.splitRowToMatch = exports.splitMatchesToRows = exports.parseMatches = void 0;
 const Match_1 = require("./domain/Match");
-const HOST_WINNER = 'H';
-const GUEST_WINNER = 'A';
+var MatchResult;
+(function (MatchResult) {
+    MatchResult["HOST_WINNER"] = "H";
+    MatchResult["GUEST_WINNER"] = "A";
+    MatchResult["DRAW"] = "D";
+})(MatchResult || (MatchResult = {}));
 const parseMatches = (matches) => {
     const matchesList = (0, exports.splitMatchesToRows)(matches);
     return matchesList.map(exports.splitRowToMatch);
@@ -27,15 +31,15 @@ const checkIfTeamWon = (teamName, match) => {
     return (match.host === teamName && checkIfHostWon(match)) ||
         (match.guest === teamName && checkIfGuestWon(match));
 };
-// const checkIfHostWonByGoals = (match: Match): boolean => {
-//     return match.hostGoals > match.guestGoals;
-// }
-// const checkIfGuestWonByGoals = (match: Match): boolean => {
-//     return match.guestGoals > match.hostGoals;
-// }
+const checkIfHostWonByGoals = (match) => {
+    return match.hostGoals > match.guestGoals;
+};
+const checkIfGuestWonByGoals = (match) => {
+    return match.guestGoals > match.hostGoals;
+};
 const checkIfHostWon = (match) => {
-    return match.result === HOST_WINNER;
+    return match.result === MatchResult.HOST_WINNER;
 };
 const checkIfGuestWon = (match) => {
-    return match.result === GUEST_WINNER;
+    return match.result === MatchResult.GUEST_WINNER;
 };

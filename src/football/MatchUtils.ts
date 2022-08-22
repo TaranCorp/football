@@ -1,7 +1,10 @@
 import { Match } from "./domain/Match";
 
-const HOST_WINNER = 'H';
-const GUEST_WINNER = 'A';
+enum MatchResult {
+    HOST_WINNER = 'H',
+    GUEST_WINNER = 'A',
+    DRAW = 'D'
+}
 
 export const parseMatches = (matches: string): Match[] => {
     const matchesList = splitMatchesToRows(matches);
@@ -30,18 +33,18 @@ const checkIfTeamWon = (teamName: string, match: Match): boolean => {
             (match.guest === teamName && checkIfGuestWon(match))
 }
 
-// const checkIfHostWonByGoals = (match: Match): boolean => {
-//     return match.hostGoals > match.guestGoals;
-// }
+const checkIfHostWonByGoals = (match: Match): boolean => {
+    return match.hostGoals > match.guestGoals;
+}
 
-// const checkIfGuestWonByGoals = (match: Match): boolean => {
-//     return match.guestGoals > match.hostGoals;
-// }
+const checkIfGuestWonByGoals = (match: Match): boolean => {
+    return match.guestGoals > match.hostGoals;
+}
 
 const checkIfHostWon = (match: Match): boolean => {
-    return match.result === HOST_WINNER;
+    return match.result === MatchResult.HOST_WINNER;
 }
 
 const checkIfGuestWon = (match: Match): boolean => {
-    return match.result === GUEST_WINNER;
+    return match.result === MatchResult.GUEST_WINNER;
 }
