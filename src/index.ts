@@ -1,9 +1,9 @@
-import fs from 'fs';
 import {findAllWonMatches, parseMatches } from './football/MatchUtils';
+import {readMatchesFromCsv} from './csv/CsvUtils'
 
-const matches = fs.readFileSync('./src/resources/football.csv', {
-    encoding: 'utf-8'
-});
+const matchesPath = './src/resources/football.csv';
+
+const matches = readMatchesFromCsv(matchesPath);
 
 const matchesList = parseMatches(matches);
 
