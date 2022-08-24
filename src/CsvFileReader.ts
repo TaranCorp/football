@@ -5,12 +5,14 @@ export class CsvFileReader {
 
     constructor(public filename: string) {}
 
+    abstract mapRow(row: string[]): T
+
     read(): void {
         this.data = fs.readFileSync(this.filename, {
             encoding: 'utf-8'
         })
         .split('\n')
-        .map((row: string): Array<string> => {
+        .map((row: string): string[] => {
             return row.split(',')
         });
     }

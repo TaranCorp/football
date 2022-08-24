@@ -1,7 +1,6 @@
 import { CsvFileReader } from "./CsvFileReader";
 import { MatchReader } from "./domain/MatchReader";
 import { MatchesResult } from "./domain/MatchResult";
-
 const matchesPath = './src/resources/football.csv';
 
 const matchReader = new MatchReader(
@@ -22,5 +21,6 @@ for (let match of matchReader.matches) {
 console.log(`
     Manchester United won ${manUnitedWins} matches!
 `)
+
 
 
