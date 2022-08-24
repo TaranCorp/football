@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const CsvFileReader_1 = require("./CsvFileReader");
+const MatchReader_1 = require("./domain/MatchReader");
 const MatchResult_1 = require("./domain/MatchResult");
 const matchesPath = './src/resources/football.csv';
-const reader = new CsvFileReader_1.CsvFileReader(matchesPath);
+const reader = new MatchReader_1.MatchReader(matchesPath);
 reader.read();
 let manUnitedWins = 0;
 for (let match of reader.data) {
@@ -15,5 +15,5 @@ for (let match of reader.data) {
     }
 }
 console.log(`
-    Manchester United won ${manUnitedWins} matches 
+    Manchester United won ${manUnitedWins} matches!
 `);
