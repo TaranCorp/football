@@ -19,17 +19,18 @@ class CsvFileReader {
             .map((row) => {
             return row.split(',');
         })
-            .map((row) => {
-            return [
-                (0, Utils_1.dateStringToDate)(row[0]),
-                row[1],
-                row[2],
-                parseInt(row[3]),
-                parseInt(row[3]),
-                row[5],
-                row[6]
-            ];
-        });
+            .map(this.mapRow);
+    }
+    mapRow(row) {
+        return [
+            (0, Utils_1.dateStringToDate)(row[0]),
+            row[1],
+            row[2],
+            parseInt(row[3]),
+            parseInt(row[3]),
+            row[5],
+            row[6]
+        ];
     }
 }
 exports.CsvFileReader = CsvFileReader;
